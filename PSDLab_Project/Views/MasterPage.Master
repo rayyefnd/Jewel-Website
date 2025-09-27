@@ -1,0 +1,64 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.Master.cs" Inherits="PSDLab_Project.Views.MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>JAwels & Diamonds</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header>
+            <h1>JAwels & Diamonds</h1>
+                <nav style="background-color: #f8f9fa; padding: 8px 15px; border-bottom: 1px solid #e7e7e7; overflow: auto;"> 
+                    <ul style="list-style-type: none; margin: 0; padding: 0; float: left;">
+                        <%-- Guest Links --%>
+                        <asp:PlaceHolder ID="phGuest" runat="server">
+                            <li style="float: left;"><asp:HyperLink ID="hlHomeGuest" runat="server" NavigateUrl="~/Views/HomePage.aspx" style="display: block; color: #333; text-align: center; padding: 14px 16px; text-decoration: none;">Home</asp:HyperLink></li>
+                            <li style="float: left;"><asp:HyperLink ID="hlLogin" runat="server" NavigateUrl="~/Views/LoginPage.aspx" style="display: block; color: #333; text-align: center; padding: 14px 16px; text-decoration: none;">Login</asp:HyperLink></li>
+                            <li style="float: left;"><asp:HyperLink ID="hlRegister" runat="server" NavigateUrl="~/Views/RegisterPage.aspx" style="display: block; color: #333; text-align: center; padding: 14px 16px; text-decoration: none;">Register</asp:HyperLink></li>
+                        </asp:PlaceHolder>
+
+                        <%-- Customer Links --%>
+                        <asp:PlaceHolder ID="phCustomer" runat="server" Visible="false">
+                            <li style="float: left;"><asp:HyperLink ID="hlHomeCustomer" runat="server" NavigateUrl="~/Views/HomePage.aspx" style="display: block; color: #333; text-align: center; padding: 14px 16px; text-decoration: none;">Home</asp:HyperLink></li>
+                            <li style="float: left;"><asp:HyperLink ID="hlCart" runat="server" NavigateUrl="~/Views/Cart.aspx" style="display: block; color: #333; text-align: center; padding: 14px 16px; text-decoration: none;">Cart</asp:HyperLink></li>
+                            <li style="float: left;"><asp:HyperLink ID="hlMyOrders" runat="server" NavigateUrl="~/Views/MyOrder.aspx" style="display: block; color: #333; text-align: center; padding: 14px 16px; text-decoration: none;">My Orders</asp:HyperLink></li>
+                        </asp:PlaceHolder>
+
+                        <%-- Admin Links --%>
+                        <asp:PlaceHolder ID="phAdmin" runat="server" Visible="false">
+                            <li style="float: left;"><asp:HyperLink ID="hlHomeAdmin" runat="server" NavigateUrl="~/Views/HomePage.aspx" style="display: block; color: #333; text-align: center; padding: 14px 16px; text-decoration: none;">Home</asp:HyperLink></li>
+                            <li style="float: left;"><asp:HyperLink ID="hlAddJewel" runat="server" NavigateUrl="~/Views/AddJewel.aspx" style="display: block; color: #333; text-align: center; padding: 14px 16px; text-decoration: none;">Add Jewel</asp:HyperLink></li>
+                            <li style="float: left;"><asp:HyperLink ID="hlReports" runat="server" NavigateUrl="~/Views/WebForm1.aspx" style="display: block; color: #333; text-align: center; padding: 14px 16px; text-decoration: none;">Reports</asp:HyperLink></li>
+                            <li style="float: left;"><asp:HyperLink ID="hlHandleOrders" runat="server" NavigateUrl="~/Views/HandleOrders.aspx" style="display: block; color: #333; text-align: center; padding: 14px 16px; text-decoration: none;">Handle Orders</asp:HyperLink></li>
+                        </asp:PlaceHolder>
+
+                        <%-- Logged In User Links (Profile/Logout) --%>
+                        <asp:PlaceHolder ID="phLoggedIn" runat="server" Visible="false">
+                            <li style="float: left;"><asp:HyperLink ID="hlProfile" runat="server" NavigateUrl="~/Views/ProfilePage.aspx" style="display: block; color: #333; text-align: center; padding: 14px 16px; text-decoration: none;">Profile</asp:HyperLink></li>
+                            <li style="float: left;"><asp:LinkButton ID="lbLogout" runat="server" OnClick="lbLogout_Click" style="display: block; color: #333; text-align: center; padding: 14px 16px; text-decoration: none; background: none; border: none; cursor: pointer; font-family: inherit; font-size: inherit;">Logout</asp:LinkButton></li>
+                        </asp:PlaceHolder>
+                    </ul>
+                    <div style="float: right; padding: 14px 20px 14px 0;">
+                        <asp:Label ID="lblWelcome" runat="server" Visible="false" style="color: #555; font-size: 0.9em;"></asp:Label>
+                    </div>
+                    <div style="clear: both;"></div> 
+                </nav>
+            <hr />
+        </header>
+
+        <main>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </main>
+
+        <footer>
+            <hr />
+            <p>&copy; <%= DateTime.Now.Year %> - JAwels & Diamonds</p>
+        </footer>
+    </form>
+</body>
+</html>
